@@ -1,0 +1,13 @@
+# This file contains values from Cookiecutter
+
+default_context:
+  project_name: "media-filesize-estimator"
+  project_description: "`media-filesize-estimator` estimates media file size in different formats w/o actually converting the file"
+  organization: "kHarshit"
+  license: "MIT"
+  minimal_python_version: 3.8
+  github_name: "kHarshit"
+  email: "kumar_harshit@outlook.com"
+  version: "0.1.0"
+  line_length: "88"
+  create_example_template: "cli"
