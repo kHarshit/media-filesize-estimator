@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "media-filesize-estimator"
 version = "0.1.0"
-description = "`media-filesize-estimator` estimates media file size in different formats w/o actually converting the file"
+description = "Estimates media file size in different formats w/o actually converting the file"
 readme = "README.md"
 authors = ["kHarshit <kumar_harshit@outlook.com>"]
 license = "MIT"

@@ -2,7 +2,7 @@
 
 default_context:
   project_name: "media-filesize-estimator"
-  project_description: "`media-filesize-estimator` estimates media file size in different formats w/o actually converting the file"
+  project_description: "Estimates media file size in different formats w/o actually converting the file"
   organization: "kHarshit"
   license: "MIT"
   minimal_python_version: 3.8
