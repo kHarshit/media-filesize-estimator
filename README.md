@@ -15,6 +15,8 @@ Estimates media file size in different formats w/o actually converting the file
 
 ## Installation
 
+The package works with python 3.8+.
+
 ```bash
 pip install -U media-filesize-estimator
 ```

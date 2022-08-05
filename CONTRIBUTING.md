@@ -1,9 +1,27 @@
 # How to contribute
 
+First, clone the repo (you may want to create a fork on GitHub).
+
+```
+git clone https://github.com/kHarshit/media-filesize-estimator.git
+
+# if created fork, run
+# git clone https://github.com/{YourGitHubUsername}/media-filesize-estimator.git
+```
+
 ## Dependencies
 
 We use `poetry` to manage the [dependencies](https://github.com/python-poetry/poetry).
 If you dont have `poetry`, you should install with `make poetry-download`.
+
+It's recommended to use `virtualenv` or `conda`.
+If you're using conda, you can create a new env using
+```
+# create new env
+conda create -n py3.8env python=3.8
+# activate env
+conda activate py3.8env
+```
 
 To install dependencies and prepare [`pre-commit`](https://pre-commit.com/) hooks you would need to run `install` command:
 
@@ -24,7 +42,7 @@ make codestyle
 
 ### Checks
 
-Many checks are configured for this project. Command `make check-codestyle` will check black, isort and darglint.
+Many checks are configured for this project. `make test` runs tests. Command `make check-codestyle` will check black, isort and darglint.
 The `make check-safety` command will look at the security of your code.
 
 Comand `make lint` applies all checks.
@@ -33,11 +51,13 @@ Comand `make lint` applies all checks.
 
 Before submitting your code please do the following steps:
 
-1. Add any changes you want
-1. Add tests for the new changes
-1. Edit documentation if you have changed something significant
-1. Run `make codestyle` to format your changes.
-1. Run `make lint` to ensure that types, security and docstrings are okay.
+1. Create a branch for your change using `git checkout -b <branch_name>`.
+2. Add any changes you want using `git add <files_changed>` & `git commit -m "<git message>"`.
+3. Add tests for the new changes.
+4. Edit documentation if you have changed something significant.
+5. Run `make codestyle` to format your changes.
+6. Run `make lint` to ensure that tests, types, security and docstrings are okay.
+7. Push the changes to GitHub using `git push -u origin <branch_name>`.
 
 ## Other help
 
