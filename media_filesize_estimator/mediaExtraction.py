@@ -18,7 +18,7 @@ class Extraction:
         param: requires the location of the media file
         """
         if location == None:
-            raise Exception("File not provided. Please provide a media file to work on")
+            raise Exception("File not provided. Please provide a media file to perform extraction on")
         location = r"{}".format(location)
         if os.path.exists(location):
             self.mediaFilePath = location
@@ -34,6 +34,7 @@ class Extraction:
             mimestart = mimestart.split('/')[0]
             if mimestart in ['video','audio','image']:
                 print("The given media file is of type : {}".format(mimestart))
+                self.mediaType = mimestart
             else:
                 raise Exception("The provided file is not a media file. Please provide a valid media file")
         else:
