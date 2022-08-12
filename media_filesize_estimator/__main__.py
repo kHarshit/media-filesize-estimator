@@ -7,17 +7,17 @@ from random import choice
 import typer
 from rich.console import Console
 
-from media_filesize_estimator import version
+from media_filesize_estimator import mediaEstimation, version
 from media_filesize_estimator.example import hello
 
 
-class Color(str, Enum):
-    white = "white"
-    red = "red"
-    cyan = "cyan"
-    magenta = "magenta"
-    yellow = "yellow"
-    green = "green"
+#class Color(str, Enum):
+    # white = "white"
+    # red = "red"
+    # cyan = "cyan"
+    #magenta = "magenta"
+    #yellow = "yellow"
+    #green = "green"
 
 
 app = typer.Typer(
@@ -39,14 +39,14 @@ def version_callback(print_version: bool) -> None:
 
 @app.command(name="")
 def main(
-    name: str = typer.Option(..., help="Person to greet."),
-    color: Optional[Color] = typer.Option(
+    #name: str = typer.Option(..., help="Person to greet."),
+    mediaConfig: Optional[mediaEstimation] = typer.Option(
         None,
-        "-c",
-        "--color",
-        "--colour",
+        "-media",
+        "--mediaConfig",
+        "--mediaConfiguration",
         case_sensitive=False,
-        help="Color for print. If not specified then choice will be random.",
+        help="Media File Configuration\n filename(required) - Specify the file name \n Params: resolution, bitrate, framerate(optional) \n Save format(optional) - Specify XML or JSON \n Save location(optional) - Specify the save location",
     ),
     print_version: bool = typer.Option(
         None,
@@ -58,8 +58,8 @@ def main(
     ),
 ) -> None:
     """Print a greeting with a giving name."""
-    if color is None:
-        color = choice(list(Color))
+    if mediaConfig is None:
+        mediaConfig = choice(list(mediaEstimation))
 
     greeting: str = hello(name)
     console.print(f"[bold {color}]{greeting}[/]")
