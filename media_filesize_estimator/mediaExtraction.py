@@ -32,7 +32,7 @@ class Extraction:
         mimestart = mimetypes.guess_type(self.fileNameWithExtension)[0]
 
         if mimestart != None:
-            mimestart = str(mimestart).split("/")[0]  # type: ignore
+            mimestart = str(mimestart).split("/")[0]
             if mimestart in ["video", "audio", "image"]:
                 print(f"The given media file is of type : {mimestart}")
                 self.mediaType = mimestart
