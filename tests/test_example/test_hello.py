@@ -3,6 +3,8 @@ from media_filesize_estimator import mediaExtraction
 import pytest
 
 from media_filesize_estimator.example import hello
+from media_filesize_estimator.mediaEstimation import Estimation
+from media_filesize_estimator.mediaExtraction import Extraction
 
 
 @pytest.mark.parametrize(
