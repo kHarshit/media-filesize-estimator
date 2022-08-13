@@ -11,13 +11,13 @@ from media_filesize_estimator import mediaEstimation, version
 from media_filesize_estimator.example import hello
 
 
-#class Color(str, Enum):
-    # white = "white"
-    # red = "red"
-    # cyan = "cyan"
-    #magenta = "magenta"
-    #yellow = "yellow"
-    #green = "green"
+class Color(str, Enum):
+    white = "white"
+    red = "red"
+    cyan = "cyan"
+    magenta = "magenta"
+    yellow = "yellow"
+    green = "green"
 
 
 app = typer.Typer(
@@ -39,8 +39,7 @@ def version_callback(print_version: bool) -> None:
 
 @app.command(name="")
 def main(
-    #name: str = typer.Option(..., help="Person to greet."),
-    mediaConfig: Optional[mediaEstimation] = typer.Option(
+    mediaConfig: str = typer.Option(
         None,
         "-media",
         "--mediaConfig",
@@ -58,6 +57,8 @@ def main(
     ),
 ) -> None:
     """Print a greeting with a giving name."""
+    # if color is None:
+    color = choice(list(Color))
     if mediaConfig is None:
         mediaConfig = choice(list(mediaEstimation))
 

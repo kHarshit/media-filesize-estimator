@@ -1,5 +1,4 @@
 """Tests for hello function."""
-from media_filesize_estimator import mediaExtraction
 import pytest
 
 from media_filesize_estimator.example import hello
@@ -24,8 +23,3 @@ from media_filesize_estimator.mediaExtraction import Extraction
 def test_hello(name, expected):
     """Example test with parametrization."""
     assert hello(name) == expected
-
-# TODO
-def test_config(file, expected):
-    pass
-
