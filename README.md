@@ -44,13 +44,31 @@ Usage: media-filesize-estimator [OPTIONS]
 
 Options:
   -m, --media TEXT           Media file path  [required]
-  -p, --param TEXT           Parameter (resolution/bitrate/framerate) to
-                             compare
-  -sf, --save_format TEXT    Format (json/xml/csv) to save media metadata
-  -sl, --save_location TEXT  Location to save media metadata
+  -p, --property TEXT        Parameter (resolution/frame_rate/bit_depth/sampli
+                             ng_rate/channels) to compare
+  -sf, --save-format TEXT    Format (json/xml/csv) to save media metadata
+  -sl, --save-location TEXT  Location to save media metadata and/or graph
+                             [default: ./]
   -v, --version              Prints the version of the media-filesize-
                              estimator package.
   --help                     Show this message and exit.
+```
+
+```
+$ media-filesize-estimator --media assets/sample_video_redfort.mp4 --property resolution --save-location /tmp/ --save-format xml
+The given media file is of type : video
+Extracting data from file : sample_video_redfort.mp4
+Extraction completed successfully to file : /tmp/sample_video_redfort.xml
+Metadata is saved at /tmp/sample_video_redfort.xml
+The given media file is of type : video
+Uncompressed file size estimation of the given file in MB with resolution 1920x1080 : 593.262 MB
+Uncompressed file size estimation of the given file in MB with resolution 3840x2160 : 2373.047 MB
+Uncompressed file size estimation of the given file in MB with resolution 2560x1440 : 1054.688 MB
+Uncompressed file size estimation of the given file in MB with resolution 1920x1080 : 593.262 MB
+Uncompressed file size estimation of the given file in MB with resolution 1280x720 : 263.672 MB
+Uncompressed file size estimation of the given file in MB with resolution 640x360 : 65.918 MB
+Plotting the graph for the given parameter : resolution
+Estimated filesize graph saved at /tmp//estimated_filesize.png
 ```
 
 ## Contributing

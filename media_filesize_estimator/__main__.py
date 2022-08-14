@@ -89,7 +89,9 @@ def main(
             meta_file_path = extractionObj.XMLCreation(save_location)
         elif save_format == "csv":
             meta_file_path = extractionObj.CSVCreation(save_location)
-        console.print(f"[bold {color}]Metadata is saved at {meta_file_path}[/]")
+        console.print(
+            f"[bold {color}]Extracted metadata is saved at {meta_file_path}[/]"
+        )
 
     obj = Estimation(media)
     out_graph_path = obj.plotGraph(property, save_location)
