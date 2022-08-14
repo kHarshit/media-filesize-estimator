@@ -54,6 +54,7 @@ def test_csv():
                 ("complete_name" not in line)
                 and ("file_name") not in line
                 and ("folder_name") not in line
+                and ("_date") not in line
             ):
                 print(line)
                 assert line in fileone
