@@ -1,6 +1,7 @@
 """Tests for Extraction class"""
 import json
-import xml.etree.ElementTree as ET
+
+from defusedxml.ElementTree import parse
 
 from media_filesize_estimator.mediaExtraction import Extraction
 
@@ -33,8 +34,8 @@ def test_xml():
     extractionObj = Extraction("assets/sample_video_redfort.mp4")
     extractionObj.XMLCreation()  # creates in current folder
 
-    root_a = ET.parse("assets/sample_video_redfort.xml").getroot()
-    root_b = ET.parse("sample_video_redfort.xml").getroot()
+    root_a = parse("assets/sample_video_redfort.xml").getroot()
+    root_b = parse("sample_video_redfort.xml").getroot()
     # compare params
     for param in [
         "{https://mediaarea.net/mediainfo}Video_Codec_List",
