@@ -223,7 +223,7 @@ class Estimation:
 
         return plotDetails
 
-    def plotGraph(self, mediaProperty=None):
+    def plotGraph(self, mediaProperty=None, outGraphPath="./"):
         """
         Using matplotlib give estimates on all the possible media properties
         """
@@ -249,9 +249,10 @@ class Estimation:
 
         plt.ylabel("File Size in Mega Bytes(MB)")
         plt.title(f"File size estimation of : {mediaProperty}")
-        plt.show()
+        save_path = f"{outGraphPath}/estimated_filesize.png"
+        plt.savefig(save_path)
 
-        pass
+        return save_path
 
     def calculateVideoSize(
         self,
@@ -282,8 +283,3 @@ class Estimation:
         ) / 8
         file_size = round(file_size_bytes / (1024 * 1024), 3)
         return file_size
-
-
-if __name__ == "__main__":
-    x = Estimation(r"C:\Users\drdin\Downloads\project_test.wav")
-    y = x.plotGraph("resolution")

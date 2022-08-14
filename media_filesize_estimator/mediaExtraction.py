@@ -120,4 +120,4 @@ class Extraction:
                 f.write(data)
         returnStatment = f"Extraction completed successfully to file : {finalFile}"
         print(returnStatment)
-        return returnStatment
+        return finalFile
