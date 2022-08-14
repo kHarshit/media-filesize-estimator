@@ -71,7 +71,7 @@ Plotting the graph for the given parameter : resolution
 Estimated filesize graph saved at /tmp//estimated_filesize.png
 ```
 
-<img src="assets/estimated_graph.png" alt="estimated_graph" width="400"/>
+<img src="assets/estimated_graph.png" alt="estimated_graph" width="500"/>
 
 ## Contributing
 
