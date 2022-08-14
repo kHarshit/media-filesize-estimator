@@ -1,7 +1,6 @@
 """Tests for Extraction class"""
 import json
-
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 from media_filesize_estimator.mediaExtraction import Extraction
 
@@ -33,9 +32,16 @@ def test_xml():
     extractionObj = Extraction("assets/sample_video_redfort.mp4")
     extractionObj.XMLCreation()  # creates in current folder
 
-    treea = etree.parse("assets/sample_video_redfort.xml")
-    treeb = etree.parse("sample_video_redfort.xml")
-    assert set(treea.getroot().itertext()) == set(treeb.getroot().itertext())
+    root_a = ET.parse("assets/sample_video_redfort.xml").getroot()
+    root_b = ET.parse("sample_video_redfort.xml").getroot()
+    # compare params
+    for param in [
+        "{https://mediaarea.net/mediainfo}Video_Codec_List",
+        "{https://mediaarea.net/mediainfo}Audio_Format_Listl",
+        "{https://mediaarea.net/mediainfo}FileSize",
+    ]:
+        for a, b in zip(root_a.iter(param), root_b.iter(param)):
+            assert a.text == b.text
 
 
 def test_csv():
