@@ -7,7 +7,9 @@ from random import choice
 import typer
 from rich.console import Console
 
-from media_filesize_estimator import mediaEstimation, version
+from media_filesize_estimator import version
+from media_filesize_estimator.mediaEstimation import Estimation
+from media_filesize_estimator.mediaExtraction import Extraction
 
 
 class Color(str, Enum):
@@ -45,26 +47,26 @@ def main(
         case_sensitive=False,
         help="Media file path",
     ),
-    param: str = typer.Option(
+    property: str = typer.Option(
         None,
         "-p",
-        "--param",
+        "--property",
         case_sensitive=False,
-        help="Parameter (resolution/bitrate/framerate) to compare",
+        help="Parameter (resolution/frame_rate/bit_depth/sampling_rate/channels) to compare",
     ),
     save_format: str = typer.Option(
         None,
         "-sf",
-        "--save_format",
+        "--save-format",
         case_sensitive=False,
         help="Format (json/xml/csv) to save media metadata",
     ),
     save_location: str = typer.Option(
-        None,
+        "./",
         "-sl",
-        "--save_location",
+        "--save-location",
         case_sensitive=False,
-        help="Location to save media metadata",
+        help="Location to save media metadata and/or graph",
     ),
     print_version: bool = typer.Option(
         None,
@@ -79,8 +81,23 @@ def main(
     # if color is None:
     color = choice(list(Color))
 
-    dummy_msg = "Package in development!"
-    console.print(f"[bold {color}]{dummy_msg}[/]")
+    if save_format is not None:
+        extractionObj = Extraction(media)
+        if save_format == "json":
+            meta_file_path = extractionObj.jsonCreation(save_location)
+        elif save_format == "xml":
+            meta_file_path = extractionObj.XMLCreation(save_location)
+        elif save_format == "csv":
+            meta_file_path = extractionObj.CSVCreation(save_location)
+        console.print(
+            f"[bold {color}]Extracted metadata is saved at {meta_file_path}[/]"
+        )
+
+    obj = Estimation(media)
+    out_graph_path = obj.plotGraph(property, save_location)
+    console.print(
+        f"[bold {color}]Estimated filesize graph saved at {out_graph_path}[/]"
+    )
 
 
 if __name__ == "__main__":

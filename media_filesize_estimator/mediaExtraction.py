@@ -118,6 +118,4 @@ class Extraction:
                 print("File already created overwriting the content")
             with open(finalFile, "w") as f:
                 f.write(data)
-        returnStatment = f"Extraction completed successfully to file : {finalFile}"
-        print(returnStatment)
-        return returnStatment
+        return finalFile
