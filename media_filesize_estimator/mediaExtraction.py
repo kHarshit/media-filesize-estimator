@@ -52,8 +52,10 @@ class Extraction:
         Create a JSON file in the required location or else on the default location
         """
         print(f"Extracting data from file : {self.fileNameWithExtension}")
-        jsonData = pymediainfo.MediaInfo.parse(self.mediaFilePath, output="JSON")
-        print("An error occured, please check the file and try again")
+        try:
+            jsonData = pymediainfo.MediaInfo.parse(self.mediaFilePath, output="JSON")
+        except:
+            raise Exception("An error occured, please check the file and try again")
 
         extractionType = ".json"
         return self.fileCreation(jsonData, extractionPath, extractionType)
@@ -66,7 +68,7 @@ class Extraction:
         try:
             XMLData = pymediainfo.MediaInfo.parse(self.mediaFilePath, output="XML")
         except:
-            print("An error occured, please check the file and try again")
+            raise Exception("An error occured, please check the file and try again")
 
         extractionType = ".xml"
         return self.fileCreation(XMLData, extractionPath, extractionType)
@@ -80,7 +82,7 @@ class Extraction:
             mediainfoObject = pymediainfo.MediaInfo.parse(self.mediaFilePath)
             mediainfoDictionary = mediainfoObject.to_data()
         except:
-            print("An error occured, please check the file and try again")
+            raise Exception("An error occured, please check the file and try again")
 
         tracksData = mediainfoDictionary["tracks"]
         extractionType = ".csv"
