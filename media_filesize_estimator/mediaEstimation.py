@@ -66,7 +66,7 @@ class Estimation:
             video_bit_depth = int(mediaData["bit_depth"])  # type: ignore
             number_of_frames = int(mediaData["frame_count"])  # type: ignore
             frame_rate = float(mediaData["frame_rate"])  # type: ignore
-            duration_in_seconds = floor(number_of_frames / frame_rate)  # type: ignore
+            duration_in_seconds = floor(number_of_frames / frame_rate)
 
             if mediaProperty == "resolution":
                 video_size = self.calculateVideoSize(
@@ -137,15 +137,15 @@ class Estimation:
                 )
 
         elif mediaType == "audio":
-            audio_sampling_rate = int(mediaData["sampling_rate"])
-            audio_channels = int(mediaData["channel_s"])
+            audio_sampling_rate = int(mediaData["sampling_rate"])  # type: ignore
+            audio_channels = int(mediaData["channel_s"])  # type: ignore
             try:
-                audio_bit_depth = int(mediaData["bit_depth"])
+                audio_bit_depth = int(mediaData["bit_depth"])  # type: ignore
             except:
                 # compressed files might or might not have bit depth
                 # if bit depth is not mentioned we are assuming it as 8 by default
                 audio_bit_depth = 8
-            audio_duration = round(int(mediaData["duration"]) / 1000)
+            audio_duration = round(int(mediaData["duration"]) / 1000)  # type: ignore
 
             if mediaProperty == "sampling_rate":
                 audio_size = self.calculateAudioSize(
