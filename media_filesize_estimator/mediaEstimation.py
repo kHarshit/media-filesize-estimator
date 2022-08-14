@@ -4,7 +4,8 @@ from math import floor
 
 import matplotlib.pyplot as plt
 import pymediainfo
-from mediaExtraction import Extraction
+
+from media_filesize_estimator.mediaExtraction import Extraction
 
 
 class Estimation:
