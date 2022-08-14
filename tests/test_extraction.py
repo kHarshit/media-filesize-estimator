@@ -5,16 +5,6 @@ import xml.etree.ElementTree as ET
 from media_filesize_estimator.mediaExtraction import Extraction
 
 
-def ordered(obj):
-    """Compare two json objects' data"""
-    if isinstance(obj, dict):
-        return sorted((k, ordered(v)) for k, v in obj.items())
-    if isinstance(obj, list):
-        return sorted(ordered(x) for x in obj)
-    else:
-        return obj
-
-
 def test_json():
     """Test JSON data creation"""
     extractionObj = Extraction("assets/sample_video_redfort.mp4")
@@ -24,7 +14,11 @@ def test_json():
     ) as fb:
         data_a = json.load(fa)
         data_b = json.load(fb)
-        assert ordered(data_a) == ordered(data_b)
+        for tag_a, tag_b in zip(data_a["media"]["track"], data_b["media"]["track"]):
+            # compare params of General type only
+            if tag_a["@type"] == "General":
+                for param in ["Video_Format_List", "Audio_Format_List", "FileSize"]:
+                    assert tag_a[param] == tag_b[param]
 
 
 def test_xml():
