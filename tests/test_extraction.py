@@ -14,11 +14,17 @@ def test_json():
     ) as fb:
         data_a = json.load(fa)
         data_b = json.load(fb)
-        for tag_a, tag_b in zip(data_a["media"]["track"], data_b["media"]["track"]):
-            # compare params of General type only
-            if tag_a["@type"] == "General" and tag_b["@type"] == "General":
-                for param in ["Video_Format_List", "Audio_Format_List", "FileSize"]:
-                    assert tag_a[param] == tag_b[param]
+        general_tag_a = {}
+        general_tag_b = {}
+        for tag in data_a["media"]["track"]:
+            if tag["@type"] == "General":
+                general_tag_a = tag
+        for tag in data_b["media"]["track"]:
+            if tag["@type"] == "General":
+                general_tag_b = tag
+        # compare params of General type only
+        for param in ["Video_Format_List", "Audio_Format_List", "FileSize"]:
+            assert general_tag_a[param] == general_tag_b[param]
 
 
 def test_xml():
