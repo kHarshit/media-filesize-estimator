@@ -1,6 +1,7 @@
 # import packages which are necessary
 from fileinput import filename
 from math import floor
+import matplotlib.pyplot as plt
 
 import pymediainfo
 
@@ -82,8 +83,26 @@ class Estimation:
     def plotGraph(self, mediaProperty=None):
         """
         Using matplotlib give estimates on all the possible media properties
+
+        Possible media properties:
+            Video => resolution, frame rate, bit depth, duration
+            Audio => time, sample_rate, bit depth, channels
         """
-        pass
+        possibleProperties = ["resolution", "frame_rate", "bit_depth", "duration", "time", "sample_rate", "channels"]
+
+        if mediaProperty not in possibleProperties: print("Not a valid media property")
+        else:
+            plotDetails = self.estimate(mediaProperty)
+            print("Plotting the graph for the given parameter")
+
+            keys = plotDetails.keys()
+            values = plotDetails.values()
+
+            plt.xlabel(mediaProperty)
+            plt.ylabel("File Size in Mega Bytes(MB)")
+            plt.title(f"File size estimation of : {mediaProperty}")
+            plt.bar(keys, values)
+            plt.show()
 
     def calculateSize(
         self,
