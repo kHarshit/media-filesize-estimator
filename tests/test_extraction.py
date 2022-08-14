@@ -16,7 +16,7 @@ def test_json():
         data_b = json.load(fb)
         for tag_a, tag_b in zip(data_a["media"]["track"], data_b["media"]["track"]):
             # compare params of General type only
-            if tag_a["@type"] == "General":
+            if tag_a["@type"] == "General" and tag_b["@type"] == "General":
                 for param in ["Video_Format_List", "Audio_Format_List", "FileSize"]:
                     assert tag_a[param] == tag_b[param]
 
