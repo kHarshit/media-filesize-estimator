@@ -50,6 +50,10 @@ def test_csv():
         filetwo = fb.readlines()
         for line in filetwo:
             # ignore file name
-            if ("complete_name" not in line) and ("file_name") not in line:
+            if (
+                ("complete_name" not in line)
+                and ("file_name") not in line
+                and ("folder_name") not in line
+            ):
                 print(line)
                 assert line in fileone
