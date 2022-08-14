@@ -49,4 +49,7 @@ def test_csv():
         fileone = fa.readlines()
         filetwo = fb.readlines()
         for line in filetwo:
-            assert line in fileone
+            # ignore file name
+            if ("complete_name" not in line) and ("file_name") not in line:
+                print(line)
+                assert line in fileone
