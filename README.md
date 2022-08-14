@@ -71,6 +71,8 @@ Plotting the graph for the given parameter : resolution
 Estimated filesize graph saved at /tmp//estimated_filesize.png
 ```
 
+<img src="assets/estimated_graph.png" alt="estimated_graph" width="400"/>
+
 ## Contributing
 
 Thanks for considering contributing to this project. Please follow [Contributing guidelines](https://github.com/kHarshit/media-filesize-estimator/blob/main/CONTRIBUTING.md).
